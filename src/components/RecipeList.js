@@ -19,7 +19,7 @@ function RecipeList(props) {
           return (
             <tr key={recipe.id}>
               <td>
-                <Link to={"/recipe/" + recipe.id}>{recipe.title}</Link>
+                <Link to={"/recipe/" + recipe.recipe_id}>{recipe.title}</Link>
               </td>
               <td>{recipe.culture}</td>
               <td>{recipe.temperature}</td>
@@ -42,7 +42,7 @@ RecipeList.propTypes = {
       temperature: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
       mealType: PropTypes.string.isRequired,
-      favorite: PropTypes.boolean,
+      // favorite: PropTypes.boolean,
     })
   ).isRequired,
 };

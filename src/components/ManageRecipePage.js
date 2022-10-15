@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import RecipeForm from "./RecipeForm";
 
 const ManageRecipePage = (props) => {
@@ -23,7 +23,6 @@ const ManageRecipePage = (props) => {
   return (
     <>
       <h2>Manage Recipe</h2>
-
       <RecipeForm recipe={recipe} onChange={handleChange} />
     </>
   );

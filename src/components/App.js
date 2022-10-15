@@ -4,12 +4,13 @@ import { Route, Switch } from "react-router-dom";
 import RecipePage from "./RecipePage";
 import NotFoundPage from "./NotFoundPage";
 import ManageRecipePage from "./ManageRecipePage";
+import HomePage from "./HomePage";
 
 function App() {
   return (
     <div className="container-fluid">
       <Switch>
-        {/* <Route path="/" exact component={HomePage} /> */}
+        <Route path="/" exact component={HomePage} />
         <Route path="/recipes" component={RecipePage} />
         <Route path="/recipe/:id" component={ManageRecipePage} />
         <Route component={NotFoundPage} />
