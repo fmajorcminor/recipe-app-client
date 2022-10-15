@@ -5,10 +5,12 @@ import RecipePage from "./RecipePage";
 import NotFoundPage from "./NotFoundPage";
 import ManageRecipePage from "./ManageRecipePage";
 import HomePage from "./HomePage";
+import Header from "./common/Header";
 
 function App() {
   return (
     <div className="container-fluid">
+      <Header />
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/recipes" component={RecipePage} />

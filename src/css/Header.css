@@ -1,0 +1,7 @@
+.header a{
+    color: grey;
+}
+
+.header a:hover {
+    color: white;
+}
