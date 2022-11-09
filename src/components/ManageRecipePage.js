@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RecipeForm from "./RecipeForm";
+import * as recipeApi from "../api/recipeApi";
+import { toast } from "react-toastify";
 
 const ManageRecipePage = (props) => {
   const [recipe, setRecipe] = useState({
@@ -12,6 +14,21 @@ const ManageRecipePage = (props) => {
     favorite: false,
   });
 
+  useEffect(() => {
+    const id = props.match.params.id;
+    if (id) {
+      recipeApi.getRecipeById(id).then((_recipe) => setRecipe(_recipe));
+    }
+  }, [props.match.params.id]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    recipeApi.saveRecipe(recipe).then(() => {
+      props.history.push("/recipes"); //redirect to courses page
+      toast.success("Recipe Saved");
+    });
+  }
+
   function handleChange(event) {
     const updatedRecipe = {
       ...recipe,
@@ -23,7 +40,11 @@ const ManageRecipePage = (props) => {
   return (
     <>
       <h2>Manage Recipe</h2>
-      <RecipeForm recipe={recipe} onChange={handleChange} />
+      <RecipeForm
+        recipe={recipe}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
     </>
   );
 };

@@ -12,13 +12,14 @@ export function getRecipeById(id) {
 }
 
 export function saveRecipe(recipe) {
-  return fetch(baseUrl + (recipe.recipe_id || ""), {
-    method: recipe.id ? "PUT" : "POST", // POST for create, PUT to update when id already exists.
+  const request = fetch(baseUrl + (recipe.recipe_id || ""), {
+    method: recipe.recipe_id ? "PUT" : "POST", // POST for create, PUT to update when id already exists.
     headers: { "content-type": "application/json" },
-    body: JSON.stringify(recipe),
+    body: JSON.stringify({ ...recipe, id: parseInt(recipe.id, 10) }),
   })
     .then(handleResponse)
     .catch(handleError);
+  return request;
 }
 
 export function deleteRecipe(recipeId) {

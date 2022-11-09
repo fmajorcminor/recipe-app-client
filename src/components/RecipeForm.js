@@ -1,10 +1,9 @@
 import React from "react";
 import TextInput from "./common/TextInput";
-import { saveRecipe } from "../api/recipeApi";
 
 function RecipeForm(props) {
   return (
-    <form>
+    <form onSubmit={props.onSubmit}>
       <TextInput
         id="title"
         name="title"
@@ -45,12 +44,7 @@ function RecipeForm(props) {
         onChange={props.onChange}
       />
 
-      <button
-        onClick={() => saveRecipe(props.recipe)}
-        type="submit"
-        value="Save"
-        className="btn btn-primary"
-      >
+      <button type="submit" value="Save" className="btn btn-primary">
         Save
       </button>
     </form>
