@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import RecipeForm from "./RecipeForm";
-import * as recipeApi from "../api/recipeApi";
+// import * as recipeApi from "../api/recipeApi";
+import recipeStore from "../stores/recipeStore";
+import * as recipeActions from "../actions/recipeActions";
 import { toast } from "react-toastify";
 
 const ManageRecipePage = (props) => {
@@ -17,13 +19,13 @@ const ManageRecipePage = (props) => {
   useEffect(() => {
     const id = props.match.params.id;
     if (id) {
-      recipeApi.getRecipeById(id).then((_recipe) => setRecipe(_recipe));
+      setRecipe(recipeStore.getRecipeById(id));
     }
   }, [props.match.params.id]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    recipeApi.saveRecipe(recipe).then(() => {
+    recipeActions.saveRecipe(recipe).then(() => {
       props.history.push("/recipes"); //redirect to courses page
       toast.success("Recipe Saved");
     });

@@ -1,0 +1,4 @@
+export default {
+  CREATE_RECIPE: "CREATE_RECIPE",
+  LOAD_COURSES: "LOAD_COURSES",
+};
